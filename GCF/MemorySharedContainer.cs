@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace GCF;
 
@@ -9,13 +10,14 @@ namespace GCF;
 public class MemorySharedContainer
 {
     private List<string> _elements = new();
-    private static readonly object _contatinerLock = new object();
+    private readonly object _contatinerLock = new();
 
     public void Add(IEnumerable<string> items)
     {
         if (items == null)
         {
             throw new ArgumentNullException(null,"Cannot be null");
+
         }
         lock (_contatinerLock)
         {
