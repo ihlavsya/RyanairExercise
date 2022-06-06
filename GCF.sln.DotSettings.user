@@ -3,5 +3,9 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.GCFTests.GetGCF_Returns3_When3And9&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.MemorySharedContainerTests.Add_GetTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.MemorySharedContainerTests.GetWhenCollectionEmpty&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.MemorySharedContainerTests.GetWhenCollectionIsEmpty&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.MemorySharedContainerTests.AddWhenSourceIsEmpty&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::CBC6DA5E-2C21-457F-BDDD-C0172EB8AA95::net6.0::GCFTests.MemorySharedContainerTests.AddWhenSourceIsNull&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

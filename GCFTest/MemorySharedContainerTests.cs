@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GCF;
@@ -8,6 +9,37 @@ namespace GCFTests;
 public class MemorySharedContainerTests
 {
     [Test]
+    public void AddWhenSourceIsNull()
+    {
+        var container = new MemorySharedContainer();
+        
+        Assert.Throws<ArgumentNullException>(() => container.Add(null), "Cannot be null");
+    }
+
+    [Test]
+    public void AddWhenSourceIsEmpty()
+    {
+        var expected = new List<string>();
+        var container = new MemorySharedContainer();
+        container.Add(expected);
+
+        var actual = container.Get().ToList();
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+    
+    [Test]
+    public void GetWhenCollectionIsEmpty()
+    {
+        var expected = new List<string>();
+        var container = new MemorySharedContainer();
+
+        var actual = container.Get().ToList();
+
+        CollectionAssert.AreEqual(expected, actual);
+    }
+    
+    [Test]
     public void Add_GetTest()
     {
         var expected = new List<string>
@@ -16,9 +48,11 @@ public class MemorySharedContainerTests
             "2",
             "3"
         };
-        MemorySharedContainer.Add(expected);
-        var actual = MemorySharedContainer.Get().ToList();
+        var container = new MemorySharedContainer();
+        
+        container.Add(expected);
+        var actual = container.Get().ToList();
 
-        Assert.AreEqual(expected, actual);
+        CollectionAssert.AreEqual(expected, actual);
     }
 }

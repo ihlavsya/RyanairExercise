@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GCF;
@@ -5,29 +6,31 @@ namespace GCF;
 // i made everything static because that`s how i understood "shared" in the description
 // also i used existing implementation of lists, because from the descr i gathered that the point in synchronization
 // and not in actual implementation of this type (which can be done through arrays, as it`s done for built-in list)
-public static class MemorySharedContainer
+public class MemorySharedContainer
 {
-    private static List<string> _elements = new();
-    private static readonly object _contatiner_lock = new object();
+    private List<string> _elements = new();
+    private static readonly object _contatinerLock = new object();
 
-    public static void Add(IEnumerable<string> items)
+    public void Add(IEnumerable<string> items)
     {
-        lock (_contatiner_lock)
+        if (items == null)
+        {
+            throw new ArgumentNullException(null,"Cannot be null");
+        }
+        lock (_contatinerLock)
         {
             _elements.AddRange(items);
         }
     }
     
-    public static IEnumerable<string> Get()
+    public IEnumerable<string> Get()
     {
-        string[] result;
-        lock (_contatiner_lock)
+        lock (_contatinerLock)
         {
-            result = new string[_elements.Count];
+            string[] result = new string[_elements.Count];
             _elements.CopyTo(result);
             _elements.Clear();
+            return result;
         }
-
-        return result;
     }
 }
