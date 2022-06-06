@@ -20,11 +20,12 @@ public static class MemorySharedContainer
     
     public static IEnumerable<string> Get()
     {
-        var result = new List<string>();
+        string[] result;
         lock (_contatiner_lock)
         {
-            result = _elements;
-            result.Clear();
+            result = new string[_elements.Count];
+            _elements.CopyTo(result);
+            _elements.Clear();
         }
 
         return result;
