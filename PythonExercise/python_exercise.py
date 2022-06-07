@@ -21,7 +21,7 @@ def merge_dicts(first_dict: Dict[str, int], second_dict: Dict[str, int]) -> Dict
 
     return result
 
-
+# Complexity: O(n)
 def get_biggest_str(strings: List[str]) -> str:
     if not strings:
         return None
